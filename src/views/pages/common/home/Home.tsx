@@ -1,12 +1,26 @@
 
 
+import { useEffect, useState } from "react";
 import DSlider from "../../../components/custom/DSlider";
 import ProductCollection from "../../../components/home/ProductCollection";
+import productService from "../../../../services/Product.service";
 
 
 
 
 const Home = () => {
+
+    // call data fetch for loading data first 
+    const [product, setProduct] = useState<[] | any[]>([]);
+
+    useEffect(() => {
+        productService.getAllProducts()
+            .then(data => setProduct(data))
+            .catch(error => error
+            )
+    }, [])
+
+
     return (
         <main>
             <div className="bg-sky-200">

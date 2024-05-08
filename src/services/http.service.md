@@ -12,11 +12,9 @@ todo:  Instraction
 
 */
 
-
-
+// make a axios config 
 const axiosConfig: AxiosRequestConfig = {
-    // baseURL: process.env.REACT_APP_API_PAGE_URL,  process isn't define . 
-    baseURL: ('localhost:4000/api'),
+    baseURL: process.env.REACT_APP_API_PAGE_URL,
     timeout: 15000,
     headers: { 'X-Custom-Header': 'foobar' }
 }
@@ -28,16 +26,16 @@ const instance: AxiosInstance = axios.create(axiosConfig);
 
 class Request {
     async get(url: string): Promise<AxiosResponse> {
-        return instance.get(url).then(res => res.data);
+        return instance.get(url);
     }
-    async post(url: string, body: any): Promise<AxiosResponse> {
-        return instance.post(url, body).then(res => res.data);
+    async post(url: string, body) {
+        return instance.post(url, body);
     }
-    async update(url: string, body: any): Promise<AxiosResponse> {
-        return instance.patch(url, body).then(res => res.data);
+    async update(url: string, body) {
+        return instance.patch(url, body);
     }
-    async delete(url: string): Promise<AxiosResponse> {
-        return instance.delete(url).then(res => res.data);
+    async delete(url: string) {
+        return instance.delete(url)
     }
 }
 
